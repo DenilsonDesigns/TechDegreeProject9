@@ -23,4 +23,4 @@ yarn-error.log*
 index.html
 No-Results-Layout.Png
 Results-Layout.png
-config.js
+/src/config.js

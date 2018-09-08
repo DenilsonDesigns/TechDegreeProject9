@@ -1,11 +1,17 @@
-#Tech Degree Project 9
+Tech Degree Project 9
 React with Flikr API
 
 ==============================================================
-Please configure a config.js file in the root of this project
+
+Please configure a config.js file in the src folder of this project
 in the following format:
 
+const config = {
+  apiKey: "9cedf4da7af92b9c34cbf35ebb28f309"
 
+};
+
+export default config;
 
 ===============================================================
 

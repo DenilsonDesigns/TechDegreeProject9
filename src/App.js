@@ -1,18 +1,33 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Config from "./config";
+import GifList from "./components/GifList";
+
+let apiKey = Config.apiKey;
+let apiTag = "cats";
+const apiCall = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${apiTag}&per_page=24&extras=url_o&format=json&nojsoncallback=1`;
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      gifs: []
+    };
+  }
+
+  componentDidMount() {
+    fetch(apiCall)
+      .then(response => response.json())
+      .then(responseData => {
+        this.setState({ gifs: responseData });
+      });
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <GifList data={this.state.gifs} />
+        {/* <p>{this.state.gifs.photos.photo[0]}</p> */}
       </div>
     );
   }

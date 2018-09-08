@@ -1,3 +1,16 @@
+#Tech Degree Project 9
+React with Flikr API
+
+==============================================================
+Please configure a config.js file in the root of this project
+in the following format:
+
+
+
+===============================================================
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

@@ -17,7 +17,7 @@ class App extends Component {
 
   componentDidMount() {
     let apiTag = "computer";
-    const apiCall = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${apiTag}&per_page=24&extras=url_o&format=json&nojsoncallback=1`;
+    const apiCall = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${apiTag}&per_page=24&extras=url_c&format=json&nojsoncallback=1`;
 
     fetch(apiCall)
       .then(response => response.json())
@@ -30,7 +30,7 @@ class App extends Component {
   }
 
   performSearch = query => {
-    const apiCall = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&extras=url_o&format=json&nojsoncallback=1`;
+    const apiCall = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&extras=url_c&format=json&nojsoncallback=1`;
     fetch(apiCall)
       .then(response => response.json())
       .then(responseData => {
@@ -45,6 +45,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <SearchForm onSearch={this.performSearch} />
+        <h2>Results</h2>
         <div className="photo-container">
           <GifList data={this.state.gifs} />
         </div>

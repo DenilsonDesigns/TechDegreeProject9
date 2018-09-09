@@ -45,6 +45,20 @@ class App extends Component {
     return (
       <React.Fragment>
         <SearchForm onSearch={this.performSearch} />
+        <nav className="main-nav">
+          <ul>
+            <li>
+              <a>Cats</a>
+            </li>
+            <li>
+              <a>Dogs</a>
+            </li>
+            <li>
+              <a>Computers</a>
+            </li>
+          </ul>
+        </nav>
+
         <h2>Results</h2>
         <div className="photo-container">
           <GifList data={this.state.gifs} />

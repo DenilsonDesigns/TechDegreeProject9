@@ -18,7 +18,11 @@ class SearchForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className="search-form">
+      <form
+        onSubmit={this.handleSubmit}
+        action="/results"
+        className="search-form"
+      >
         <label hidden htmlFor="search">
           Search
         </label>

@@ -3,7 +3,7 @@ import Gif from "./Gif";
 
 const GifList = props => {
   const results = props.data;
-  let gifs = results.map(gif => <Gif url={gif.url_o} />);
+  let gifs = results.map(gif => <Gif key={gif.id} url={gif.url_o} />);
   return <ul>{gifs}</ul>;
 };
 

@@ -7,6 +7,7 @@ import SearchForm from "./components/SearchForm";
 import NavBar from "./components/NavBar";
 import { Route, Redirect, Switch } from "react-router-dom";
 import NotFound from "./components/NotFound";
+import Spinner from "./components/UI/Spinner";
 
 let apiKey = Config.apiKey;
 
@@ -17,7 +18,9 @@ class App extends Component {
       cats: [],
       dogs: [],
       computers: [],
-      searchResults: []
+      searchResults: [],
+      loading: false,
+      searchedOnce: false
     };
   }
 
@@ -53,18 +56,35 @@ class App extends Component {
   }
 
   performSearch = query => {
+    this.setState({ loading: true });
     const apiCall = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&extras=url_c&format=json&nojsoncallback=1`;
     fetch(apiCall)
       .then(response => response.json())
       .then(responseData => {
-        this.setState({ searchResults: responseData.photos.photo });
+        this.setState({
+          searchResults: responseData.photos.photo,
+          loading: false,
+          searchedOnce: true
+        });
       })
       .catch(err => {
         console.error("Error with fetching Flickr", err);
+        this.setState({ loading: false, searchedOnce: true });
       });
   };
 
   render() {
+    let searchAppend = <GifList data={this.state.searchResults} />;
+
+    if (this.state.loading) {
+      searchAppend = <Spinner />;
+    } else if (
+      this.state.searchResults.length === 0 &&
+      this.state.searchedOnce
+    ) {
+      searchAppend = <h2>No results</h2>;
+    }
+
     return (
       <React.Fragment>
         {/* <SearchForm onSearch={this.performSearch} /> */}
@@ -93,7 +113,7 @@ class App extends Component {
               render={() => (
                 <React.Fragment>
                   <SearchForm onSearch={this.performSearch} />
-                  <GifList data={this.state.searchResults} />
+                  {searchAppend}
                 </React.Fragment>
               )}
             />

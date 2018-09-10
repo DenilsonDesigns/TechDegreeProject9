@@ -62,16 +62,14 @@ class App extends Component {
       .catch(err => {
         console.error("Error with fetching Flickr", err);
       });
-    // this.props.history.push("/results");
   };
 
   render() {
     return (
       <React.Fragment>
-        <SearchForm onSearch={this.performSearch} />
+        {/* <SearchForm onSearch={this.performSearch} /> */}
         <NavBar />
 
-        <h2>Results</h2>
         <div className="photo-container">
           <Switch>
             <Route
@@ -92,8 +90,14 @@ class App extends Component {
             <Route
               exact
               path="/results"
-              render={() => <GifList data={this.state.searchResults} />}
+              render={() => (
+                <React.Fragment>
+                  <SearchForm onSearch={this.performSearch} />
+                  <GifList data={this.state.searchResults} />
+                </React.Fragment>
+              )}
             />
+
             <Redirect from="/" exact to="/cats" />
             <Route path="/not-found" component={NotFound} />
             <Redirect to="/not-found" />

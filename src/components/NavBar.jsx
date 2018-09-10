@@ -21,6 +21,11 @@ const NavBar = () => {
             Computers
           </NavLink>
         </li>
+        <li>
+          <NavLink className="nav-link" to="/results">
+            Search
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

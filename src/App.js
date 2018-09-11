@@ -74,7 +74,9 @@ class App extends Component {
   };
 
   render() {
-    let searchAppend = <GifList data={this.state.searchResults} />;
+    let searchAppend = (
+      <GifList title="Search Results" data={this.state.searchResults} />
+    );
 
     if (this.state.loading) {
       searchAppend = <Spinner />;
@@ -95,17 +97,23 @@ class App extends Component {
             <Route
               exact
               path="/cats"
-              render={() => <GifList data={this.state.cats} />}
+              render={() => (
+                <GifList title="Kitty Pics" data={this.state.cats} />
+              )}
             />
             <Route
               exact
               path="/dogs"
-              render={() => <GifList data={this.state.dogs} />}
+              render={() => (
+                <GifList title="Doggo Pics" data={this.state.dogs} />
+              )}
             />
             <Route
               exact
               path="/computers"
-              render={() => <GifList data={this.state.computers} />}
+              render={() => (
+                <GifList title="CPU Pics" data={this.state.computers} />
+              )}
             />
             <Route
               exact
@@ -119,8 +127,8 @@ class App extends Component {
             />
 
             <Redirect from="/" exact to="/cats" />
-            <Route path="/not-found" component={NotFound} />
-            <Redirect to="/not-found" />
+            <Route path="/" component={NotFound} />
+            {/* <Redirect to="/not-found" /> */}
           </Switch>
         </div>
       </React.Fragment>

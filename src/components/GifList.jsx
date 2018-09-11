@@ -6,7 +6,7 @@ const GifList = props => {
   let gifs = results.map(gif => <Gif key={gif.id} url={gif.url_c} />);
   return (
     <div>
-      <h2>Results</h2>
+      <h2>{props.title}</h2>
       <ul>{gifs}</ul>
     </div>
   );

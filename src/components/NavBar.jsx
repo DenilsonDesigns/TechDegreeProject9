@@ -27,6 +27,7 @@ const NavBar = () => {
           </NavLink>
         </li>
       </ul>
+      <hr className="nav-hr" />
     </nav>
   );
 };

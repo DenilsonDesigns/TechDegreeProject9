@@ -7,7 +7,7 @@ Please configure a config.js file in the src folder of this project
 in the following format:
 
 const config = {
-  apiKey: "9cedf4da7af92b9c34cbf35ebb28f309"
+  apiKey: "......."
 
 };
 
